@@ -8,7 +8,10 @@ import java.util.LinkedList;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 public class Insertar extends javax.swing.JFrame {
 
@@ -42,26 +45,29 @@ public class Insertar extends javax.swing.JFrame {
         jLabelPasswoed = new javax.swing.JLabel();
         jTextFieldNombre = new javax.swing.JTextField();
         jTextFieldUsuario = new javax.swing.JTextField();
-        jTextFieldPassword = new javax.swing.JTextField();
         jButtonAnadir = new javax.swing.JButton();
         jButtonLimpiar = new javax.swing.JButton();
         jButtonGuardar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextPaneVer = new javax.swing.JTextPane();
+        txtprecio = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tableVenta = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Mis Password : RedesZone.net");
         setResizable(false);
 
         jLabelTitulo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabelTitulo.setText("Registra producto");
+        jLabelTitulo.setText("Registra venta");
 
         jLabelNombre.setText("Nombre");
 
         jLabelUsuario.setText("cantidad");
 
-        jLabelPasswoed.setText("Contraseña");
+        jLabelPasswoed.setText("Precio");
 
         jTextFieldUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,6 +110,40 @@ public class Insertar extends javax.swing.JFrame {
         jTextPaneVer.setEditable(false);
         jScrollPane2.setViewportView(jTextPaneVer);
 
+        txtprecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtprecioActionPerformed(evt);
+            }
+        });
+
+        tableVenta.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nombre", "Cantidad", "Precio"
+            }
+        ));
+        jScrollPane1.setViewportView(tableVenta);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -111,32 +151,38 @@ public class Insertar extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jButtonCancelar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButtonGuardar))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelTitulo)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelNombre)
-                                    .addComponent(jLabelUsuario)
-                                    .addComponent(jLabelPasswoed))
-                                .addGap(38, 38, 38)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGap(34, 34, 34)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabelTitulo)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButtonAnadir)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                                        .addComponent(jButtonLimpiar))
-                                    .addComponent(jTextFieldNombre)
-                                    .addComponent(jTextFieldUsuario)
-                                    .addComponent(jTextFieldPassword))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabelNombre)
+                                            .addComponent(jLabelUsuario)
+                                            .addComponent(jLabelPasswoed))
+                                        .addGap(38, 38, 38)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jButtonAnadir)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                                                .addComponent(jButtonLimpiar))
+                                            .addComponent(jTextFieldNombre)
+                                            .addComponent(jTextFieldUsuario)
+                                            .addComponent(txtprecio)))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jScrollPane2)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jButtonCancelar)
+                                        .addGap(199, 199, 199)
+                                        .addComponent(jButtonGuardar)))))
+                        .addGap(0, 39, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,21 +200,23 @@ public class Insertar extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelPasswoed)
-                    .addComponent(jTextFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtprecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonLimpiar)
                     .addComponent(jButtonAnadir))
-                .addGap(36, 36, 36)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCancelar)
                     .addComponent(jButtonGuardar))
                 .addGap(25, 25, 25))
         );
 
-        setSize(new java.awt.Dimension(401, 521));
+        setSize(new java.awt.Dimension(440, 548));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -184,7 +232,7 @@ public class Insertar extends javax.swing.JFrame {
         // Limpiamos todos los campos
         jTextFieldNombre.setText("");
         jTextFieldUsuario.setText("");
-        jTextFieldPassword.setText("");
+        txtprecio.setText("");
 
     }//GEN-LAST:event_jButtonLimpiarActionPerformed
 
@@ -193,20 +241,28 @@ public class Insertar extends javax.swing.JFrame {
         String nuevoItem; // String con nombre, usuario y contraseña que queremos guardar
 
         // Si algun campo está vacio, mostramos un mensaje informando de que faltan datos
-        if (jTextFieldNombre.getText().equals("") || jTextFieldUsuario.getText().equals("") || jTextFieldPassword.getText().equals("")) {
+        if (jTextFieldNombre.getText().equals("") || jTextFieldUsuario.getText().equals("") || txtprecio.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "ERROR: Faltan datos", "Mensaje de Error", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
-        nuevoItem = jTextFieldNombre.getText() + " " + jTextFieldUsuario.getText() + " " + jTextFieldPassword.getText() + " \n";
+        nuevoItem = jTextFieldNombre.getText() + " " + jTextFieldUsuario.getText() + " " + txtprecio.getText() + " \n";
         contraseñasGuardar.add(nuevoItem);
+        
         jTextPaneVer.setText(jTextPaneVer.getText() + nuevoItem);
+        //Create a two dimensional array to hold the data for the JTable.
+        DefaultTableModel model = new DefaultTableModel();
+        int var = 0;
+        tableVenta.setValueAt(jTextFieldNombre.getText(), var, 0);
+        tableVenta.setValueAt(jTextFieldUsuario.getText(), var, 1); 
+        tableVenta.setValueAt(txtprecio.getText(), var, 2);
+        
         limpiar();
     }//GEN-LAST:event_jButtonAnadirActionPerformed
     private void limpiar(){
         jTextFieldNombre.setText("");
         jTextFieldUsuario.setText("");
-        jTextFieldPassword.setText("");
+        txtprecio.setText("");
     }
     private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
 
@@ -264,6 +320,10 @@ public class Insertar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldUsuarioActionPerformed
 
+    private void txtprecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtprecioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtprecioActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAnadir;
     private javax.swing.JButton jButtonCancelar;
@@ -273,10 +333,14 @@ public class Insertar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelPasswoed;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JLabel jLabelUsuario;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextFieldNombre;
-    private javax.swing.JTextField jTextFieldPassword;
     private javax.swing.JTextField jTextFieldUsuario;
     private javax.swing.JTextPane jTextPaneVer;
+    private javax.swing.JTable tableVenta;
+    private javax.swing.JTextField txtprecio;
     // End of variables declaration//GEN-END:variables
+
 }
